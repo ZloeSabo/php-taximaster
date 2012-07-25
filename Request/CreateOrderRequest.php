@@ -64,7 +64,7 @@ class CreateOrderRequest extends TMWebApiRequest {
      */
     public function setCustomer($customer)
     {
-        $this->request_params['dest'] = $customer;
+        $this->request_params['customer'] = $customer;
 
         return $this;
     }
