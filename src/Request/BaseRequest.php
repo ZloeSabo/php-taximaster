@@ -197,7 +197,7 @@ abstract class BaseRequest
     public function send(array $params)
     {
         $resolver = new OptionsResolver();
-        $resolver->setDefined($this->requestParamsExists);
+        $resolver->setOptional($this->requestParamsExists);
         $resolver->setDefaults($this->requestParams);
         $resolver->setRequired($this->requestParamsRequired);
 
