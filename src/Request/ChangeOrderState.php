@@ -20,7 +20,7 @@ namespace It2k\TMApi\Request;
  */
 class ChangeOrderState extends BaseRequest
 {
-    //protected $method = self::METHOD_POST;
+    protected $method = self::METHOD_POST;
 
     protected $apiMethod = 'change_order_state';
 
