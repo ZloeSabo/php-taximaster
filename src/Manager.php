@@ -622,6 +622,34 @@ class Manager
     }
 
     /**
+     * Проведение операции по водителю
+     *
+     * @param int    $driverId ИД водителя
+     * @param float  $operSum  Сумма
+     * @param string $operType Тип операции: receipt - приход, expense - расход.
+     * @param string $name     Наименование операции
+     * @param string $operTime Время создания операции (если не задано, текущее)
+     * @param string $comment  Комментарий
+     *
+     * @return int
+     */
+    public function createDriverOperation($driverId, $operSum, $operType, $name = '', $operTime = '', $comment = '')
+    {
+        $params = array(
+            'driver_id' => intval($driverId),
+            'oper_sum'  => $operSum,
+            'oper_type' => $operType,
+            'name'      => $name,
+            'oper_time' => $operTime,
+            'comment'   => $comment,
+        );
+
+        $response = $this->sendRequest('CreateDriverOperation', $params);
+
+        return $response->getData('oper_id');
+    }
+
+    /**
      * Запрос операций по клиенту
      *
      * @param string $clientId   ИД клиента (может отсутствовать, если phone заполнен)
