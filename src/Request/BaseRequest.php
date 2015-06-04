@@ -166,11 +166,16 @@ abstract class BaseRequest
             curl_setopt($ch, CURLOPT_VERBOSE, 1);
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Signature: ' . $this->generateSignature($requestData),
-            'Content-Type: application/x-www-form-urlencode'
+            'Signature: ' .  $this->generateSignature($requestData),
+            'Content-Type: '. (($this->sendRequestParamsAsJson) ? 'application/json' : 'application/x-www-form-urlencode'),
         ));
 
         $this->response = curl_exec($ch);
+
+        if ($this->options['curl_debug']) {
+            print "Request: " . $requestData . "\n";
+            print "Response: " . $this->response . "\n";
+        }
 
         $errorCode = curl_errno($ch);
 
