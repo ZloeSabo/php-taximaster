@@ -24,6 +24,8 @@ class CreateDriverOperation extends BaseRequest
 
     protected $apiMethod = 'create_driver_operation';
 
+    protected $sendRequestParamsAsJson = true;
+
     protected $requestParamsRequired = array('driver_id', 'oper_sum', 'oper_type');
 
     protected $requestParamsExists = array('name', 'oper_time', 'comment');
