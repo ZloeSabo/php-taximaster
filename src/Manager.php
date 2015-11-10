@@ -300,6 +300,24 @@ class Manager
     }
 
     /**
+     * Запрос списка водителей
+     * @param string $lockedDrivers
+     * @param string $dismissedDrivers
+     * @return array
+     */
+    public function getDriversInfo($lockedDrivers = 'false', $dismissedDrivers = 'false')
+    {
+        $params = array(
+            'locked_drivers' => $lockedDrivers,
+            'dismissed_drivers' => $dismissedDrivers,
+        );
+
+        $response = $this->sendRequest('GetDriversInfo', $params);
+
+        return $response->getData('drivers_info');
+    }
+
+    /**
      * Возвращает информацию о автомобиле
      *
      * @param int    $carId
