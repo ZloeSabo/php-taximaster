@@ -48,9 +48,6 @@ class Manager
             'curl_debug' => false,
             'taximasterDateTimeFormat' => 'YmdHis',
         ));
-        $resolver->addAllowedValues(array(
-            'schema' => array('http', 'https'),
-        ));
         $resolver->setRequired(array('secret_key', 'ip', 'port', 'requestNamespace'));
 
         $this->options = $resolver->resolve($options);
