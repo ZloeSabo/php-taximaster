@@ -665,6 +665,28 @@ class Manager
     }
 
     /**
+     * Запрос операций по водителю
+     *
+     * @param string $driverId   ИД водителя
+     * @param string $startTime  Начало периода ГГГГММДДччммсс
+     * @param string $finishTime Конец периода ГГГГММДДччммсс
+     *
+     * @return array
+     */
+    public function getDriverOperations($driverId, $startTime, $finishTime)
+    {
+        $params = array(
+            'driver_id'   => $driverId,
+            'start_time'  => $startTime,
+            'finish_time' => $finishTime,
+        );
+
+        $response = $this->sendRequest('GetDriverOperations', $params);
+
+        return $response->getData('operations');
+    }
+
+    /**
      * Запрос операций по клиенту
      *
      * @param string $clientId   ИД клиента (может отсутствовать, если phone заполнен)

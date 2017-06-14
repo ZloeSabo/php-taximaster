@@ -124,9 +124,7 @@ abstract class BaseRequest
             'timeout' => 10,
             'curl_debug' => false,
         ));
-        $resolver->addAllowedValues(array(
-            'schema' => array('http', 'https'),
-        ));
+
         $resolver->setRequired(array('secret_key', 'ip', 'port'));
 
         $this->options = $resolver->resolve($options);
@@ -202,8 +200,10 @@ abstract class BaseRequest
     public function send(array $params)
     {
         $resolver = new OptionsResolver();
-        $resolver->setOptional($this->requestParamsExists);
-        $resolver->setDefaults($this->requestParams);
+        //$resolver->setDefined() Optional($this->requestParamsExists);
+        foreach ($this->requestParamsExists as $param) {
+            $resolver->setDefault($param, null);
+        }
         $resolver->setRequired($this->requestParamsRequired);
 
         if ($this->sendRequestParamsAsJson) {
