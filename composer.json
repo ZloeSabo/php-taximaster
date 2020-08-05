@@ -1,0 +1,27 @@
+{
+    "name": "it2k/tmapi",
+    "description": "Library for Taximaster software",
+    "keywords": [ "taximaster", "api", "taxi"],
+    "homepage": "https://github.com/it2k/tmapi",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=5.3",
+        "symfony/options-resolver": "^2.3|^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "It2k\\TMApi\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Evgeny Soynov",
+            "email": "saboteur@saboteur.me"
+        },
+        {
+            "name": "Egor Zyuskin",
+            "email": "egor@zyuskin.ru"
+        }
+    ]
+}
